@@ -1,0 +1,27 @@
+{
+  "name": "03_async",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^7.14.0",
+    "init": "^0.1.2",
+    "jest": "^26.6.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest",
+    "test:watch": "npm run test -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Evan-Finkelstein/03_async.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Evan-Finkelstein/03_async/issues"
+  },
+  "homepage": "https://github.com/Evan-Finkelstein/03_async#readme"
+}
