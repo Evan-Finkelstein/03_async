@@ -1,11 +1,11 @@
 const fsPromises = require('fs').promises
-
+const fetch = require('node-fetch')
 
 
 const copy = (src, dst) => {
-    fsPromises.readFile(src, 'utf-8')
+    return fsPromises.readFile(src, 'utf-8')
         .then(data => {
-            fsPromises.writeFile(dst, data);
+            return fsPromises.writeFile(dst, data);
 
         })
         .catch(err => {
@@ -14,9 +14,9 @@ const copy = (src, dst) => {
 }
 
 const transform = (src) => {
-    fsPromises.readFile(src, 'utf-8')
+    return fsPromises.readFile(src, 'utf-8')
         .then(data => {
-            fsPromises.writeFile(src, data.replace(/[^a-z]/g, '').toUpperCase().split("").reverse().join(""))
+            return fsPromises.writeFile(src, data.replace(/[^a-z]/g, '').toUpperCase().split("").reverse().join(""))
 
         })
         .catch(err => {
@@ -25,11 +25,22 @@ const transform = (src) => {
 }
 
 
+const getCharacter = (id) => {
+    return fetch(`https://rickandmortyapi.com/api/character/${id}`)
+        .then(res => {
+            return res.json()
+        })
+        .then(json => {
+            return [json.name, json.status, json.species
+
+        })
+}
 
 
 
 
 module.exports = {
     copy,
-    transform
+    transform,
+    getCharacter
 }

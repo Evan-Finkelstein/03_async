@@ -1,12 +1,13 @@
 const { copy,
-    transform } = require('./index.js');
+    transform,
+    getCharacter } = require('./index.js');
 const fsPromises = require('fs').promises
 
 
 describe('copy', () => {
 
-    afterEach(() => {
-        fsPromises.unlink('./new.md');
+    afterEach(async () => {
+        await fsPromises.unlink('./new.md');
     });
     it('copy', async () => {
         await copy('./README.md', './new.md')
@@ -17,12 +18,17 @@ describe('copy', () => {
 
 describe('transform', () => {
 
-    afterAll(() => {
-        fsPromises.writeFile('read.txt', 'yourRRRR momDHUDISDF');
+    afterAll(async () => {
+        await fsPromises.writeFile('read.txt', 'yourRRRR momDHUDISDF');
     });
     it('transform', async () => {
         await transform('read.txt')
         const content = await fsPromises.readFile('read.txt', 'utf-8')
         expect(content).toEqual('MOMRUOY')
     })
+})
+
+it('transform', async () => {
+    const expected = await getCharacter(1)
+    expect(expected).toEqual(["Rick Sanchez", "Alive", "Human"])
 })
