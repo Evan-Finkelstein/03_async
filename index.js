@@ -43,14 +43,14 @@ const getCharacter = async (id) => {
 
 // }
 
-const getManyCharacter = (arr) => {
+const getManyCharacter = async (arr) => {
 
-    return Promise.all([
+    const res = await Promise.all([
         getCharacter(arr[0]),
         getCharacter(arr[1])
 
     ])
-
+    return res
 
 }
 
