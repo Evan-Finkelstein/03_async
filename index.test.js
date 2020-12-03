@@ -1,6 +1,7 @@
 const { copy,
     transform,
-    getCharacter } = require('./index.js');
+    getCharacter,
+    getManyCharacter } = require('./index.js');
 const fsPromises = require('fs').promises
 
 
@@ -28,7 +29,11 @@ describe('transform', () => {
     })
 })
 
-it('transform', async () => {
+it('get character', async () => {
     const expected = await getCharacter(1)
     expect(expected).toEqual(["Rick Sanchez", "Alive", "Human"])
+})
+it('get many characters', async () => {
+    const expected = await getManyCharacter([1, 2])
+    expect(expected).toEqual([["Rick Sanchez", "Alive", "Human"], ["Morty Smith", "Alive", "Human"]])
 })

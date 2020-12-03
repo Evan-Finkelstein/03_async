@@ -21,11 +21,10 @@ const fetch = require('node-fetch');
 
 const fetchQuotes = () => {
     return fetch('http://futuramaapi.herokuapp.com/api/quotes/')
-        .then(res => {
-            return res.json()
-        })
+
+
         .then(json => {
-            return json.map(quote => quote.quote)
+            return res.json.map(quote => quote.quote)
 
         })
 }
